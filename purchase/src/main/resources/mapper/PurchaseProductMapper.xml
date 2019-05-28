@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.seckill.purchase.dao.ProductInfoDao" >
+
+    <resultMap id="purchaseInfoMap" type="com.seckill.common.dto.PurchaseProductInfo">
+        <result column="id" property="id" jdbcType="BIGINT"></result>
+        <result column="user_No" property="userNo" jdbcType="VARCHAR"></result>
+        <result column="product_No" property="productNo" jdbcType="VARCHAR"></result>
+        <result column="create_Date" property="createDate" jdbcType="TIMESTAMP"></result>
+        <result column="status" property="status" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.seckill.common.dto.PurchaseProductInfo">
+        insert into purchase_product_info(
+            user_no,
+            product_no,
+            create_date,
+            status
+        )values (
+          #{userNo},
+          #{productNo},
+          str_to_date(sysdate(),'%Y-%m-%d %H:%i:%s'),
+          0
+        )
+    </insert>
+
+</mapper>

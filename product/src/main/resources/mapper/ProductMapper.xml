@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.seckill.product.dao.ProductDao" >
+
+    <select id="queryProductInDB" parameterType="string" resultType="com.seckill.common.dto.ProductInfo">
+        select
+          id as id,
+          product_no as productNo,
+          product_name as productName,
+          stock as stock,
+          price as price
+          from product_info
+          where product_no = #{productNo}
+    </select>
+
+    <update id="updateProductInDB" parameterType="com.seckill.common.dto.ProductInfo">
+        update product_info set stock = #{stock} where product_no = #{productNo}
+    </update>
+</mapper>
